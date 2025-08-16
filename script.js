@@ -227,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!key) { mount.innerHTML = ''; return; }
 
     mount.innerHTML = `
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         ${PLAN_QUANTITIES.map(qty => `
           <div class="plan-type-card">
             <div class="flex items-center gap-3 mb-2">
@@ -259,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `).join('')}
-      </div>
     `;
 
     mount.querySelectorAll('.plan-type-card').forEach(card => {
@@ -345,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================================
-  // LÓGICA DO SCROLLBAR CUSTOMIZADO
+  // LÓGICA DO SCROLLBAR CUSTOMIZADO (VERSÃO CORRIGIDA)
   // ==========================================================
   function setupCustomScrollbar() {
     const plansContainer = document.getElementById('fixed-plans');
@@ -353,14 +351,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollbar = document.getElementById('plans-scrollbar');
 
     if (!plansContainer || !scrollbarThumb || !scrollbar) {
-      return; // Se os elementos não existirem, não faz nada
+      return;
     }
 
     const updateThumb = () => {
       const scrollLeft = plansContainer.scrollLeft;
       const scrollWidth = plansContainer.scrollWidth;
       const clientWidth = plansContainer.clientWidth;
-
+      
+      // Se não há conteúdo para rolar, esconde a barra.
       if (scrollWidth <= clientWidth) {
         scrollbar.style.display = 'none';
         return;
@@ -368,23 +367,29 @@ document.addEventListener("DOMContentLoaded", () => {
       
       scrollbar.style.display = 'block';
 
+      // 1. Calcula a largura do thumb (proporcional ao conteúdo visível)
       const thumbWidth = (clientWidth / scrollWidth) * 100;
-      const thumbPosition = (scrollLeft / (scrollWidth - clientWidth)) * (100 - thumbWidth);
+      
+      // 2. Calcula a posição do thumb.
+      // A posição é a porcentagem da rolagem (scrollLeft) aplicada ao espaço que sobra na barra (100% - largura do thumb).
+      const scrollableWidth = scrollWidth - clientWidth;
+      const scrollPercentage = scrollLeft / scrollableWidth;
+      const thumbPosition = scrollPercentage * (100 - thumbWidth);
 
+      // 3. Aplica os estilos usando LEFT para um posicionamento preciso
       scrollbarThumb.style.width = `${thumbWidth}%`;
-      scrollbarThumb.style.transform = `translateX(${thumbPosition}%)`;
+      scrollbarThumb.style.left = `${thumbPosition}%`;
     };
 
     plansContainer.addEventListener('scroll', updateThumb);
     window.addEventListener('resize', updateThumb);
     
-    // Usamos um observer para chamar o updateThumb quando os cards forem renderizados
+    // Usamos um MutationObserver para atualizar a barra quando os cards são renderizados
     const observer = new MutationObserver(() => {
         updateThumb();
     });
     observer.observe(plansContainer, { childList: true });
 
-    // Chamada inicial
     updateThumb();
   }
 
@@ -395,6 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPlanFilterTabs();
   wireCustomPlanner();
   setupNavObserver();
-  setupCustomScrollbar(); // Ativando a nova função
+  setupCustomScrollbar();
 
 });

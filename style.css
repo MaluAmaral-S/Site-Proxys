@@ -1,0 +1,796 @@
+/* ========================================
+   1. CONFIGURAÇÕES E IMPORTS
+   ======================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* ========================================
+   2. ESTILOS GERAIS E GLOBAIS
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3ddc84 #0000;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0a1024;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Estilos da Barra de Rolagem (Scrollbar) --- */
+*::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #3ddc84 60%, #00ffb0 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #3ddc8499, 0 0 2px #00ffb0cc;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(120deg, #00ffb0 60%, #3ddc84 100%);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* --- Títulos de Seção --- */
+/* O bloco @supports que aplicava o gradiente verde foi removido */
+#planos h2,
+#features h2,
+#how-it-works h2 {
+  color: #f1f5f9; /* Esta regra agora define a cor final como branca */
+}
+
+/* ========================================
+   3. COMPONENTES DE UI
+   ======================================== */
+
+/* --- 3.1. Botões --- */
+.btn-primary {
+  background-color: #3ddc84;
+  color: #0a1024;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  box-shadow: 0 8px 25px rgba(61, 220, 132, 0.25);
+}
+.btn-primary:hover {
+  background-color: #35c073;
+}
+.btn-secondary {
+  background-color: transparent;
+  color: #f1f5f9;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: #3ddc84;
+}
+
+/* --- 3.2. Header / Navegação --- */
+body > header {
+  background-color: rgba(10, 16, 36, 0.5) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+body > header .text-slate-300:hover {
+  color: #3ddc84 !important;
+}
+body > header nav a.is-active {
+  position: relative;
+  color: #3ddc84 !important;
+  text-shadow: 0 0 8px rgba(61, 220, 132, 0.8);
+}
+body > header nav a.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background-color: #3ddc84;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(61, 220, 132, 0.8);
+}
+
+/* --- 3.3. Seção Hero (Principal) --- */
+#home {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+.hero-art {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-art img {
+  mix-blend-mode: lighten;
+  max-width: 75%;
+  height: auto;
+  transform: translateY(-5%);
+}
+.hero-art .anim-float {
+  color: #3ddc84 !important;
+}
+
+/* --- 3.4. Seção Benefícios (Features) --- */
+.feature-card-simple {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.feature-card-simple:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(61, 220, 132, 0.2);
+}
+.feature-card-simple i {
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+/* --- 3.5. Seção de Planos --- */
+.tabs-wrapper {
+  display: inline-flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.375rem;
+}
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  color: #cbd5e1;
+  transition: all 0.2s;
+}
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+.tab-btn.is-active {
+  background: #3ddc84;
+  color: #0a1024;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(61, 220, 132, 0.25);
+}
+.plan-type-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+#planos #fixed-plans > .grid {
+  justify-items: center;
+  gap: 1.5rem;
+}
+#planos .plan-type-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+#planos .plan-type-header i {
+  font-size: 1.75rem;
+}
+#planos .plan-type-card .duration-btn {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+#planos .plan-type-card .plan-price {
+  font-size: 1.75rem;
+}
+#planos .plan-type-card .buy-btn {
+  padding: 0.7rem 1.1rem;
+  font-weight: 700;
+  border-radius: 0.6rem;
+  margin-top: 0.5rem;
+}
+#planos .plan-type-card > .flex.items-baseline.justify-between {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+#planos .plan-type-card > .flex.items-baseline.justify-between > div {
+  order: 1;
+}
+#planos .plan-type-card > .flex.items-baseline.justify-between > .buy-btn {
+  order: 2;
+}
+#planos .plan-type-card > .flex.items-start.justify-between.mb-2 {
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.25rem;
+}
+#planos .plan-type-card > .flex.items-start.justify-between.mb-2 > span {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #3ddc84;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+#planos .plan-type-card > .flex.items-start.justify-between.mb-2 > .flex.items-center.gap-2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.planner-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+#planos #custom-planner .planner-card {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.planner-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.planner-summary {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.summary-figure {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.summary-figure.emphasis {
+  background-image: linear-gradient(90deg, #3ddc84, #00b36e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(61, 220, 132, 0.4);
+}
+
+/* --- 3.6. Seção "Como Funciona" --- */
+.how-it-works-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.how-it-works-number {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(61, 220, 132, 0.1);
+  border: 1px solid #3ddc84;
+  color: #3ddc84;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* --- 3.7. Seção Rede Global / Localizações --- */
+.fi { /* Estilo para bandeiras (flag-icons) */
+  border-radius: 3px;
+}
+
+/* --- 3.8. Seção FAQ --- */
+.faq-question {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+.faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- 3.9. Página de Login e Registro --- */
+.login-container-split {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 550px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  background-color: rgba(10, 16, 36, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.login-left-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.login-right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+.form-input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.85rem 1rem;
+  color: #f1f5f9;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input::placeholder {
+  color: #94a3b8;
+  opacity: 0.6;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #3ddc84;
+  box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.2);
+}
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper .form-input {
+  padding-right: 2.5rem;
+}
+.password-toggle-icon {
+  position: absolute;
+  right: 0.75rem;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+.password-toggle-icon:hover {
+  color: #f1f5f9;
+}
+.checkbox-custom {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #3ddc84;
+}
+.checkbox-custom:checked {
+  background-color: #3ddc84;
+}
+.ddi-select,
+.planner-card select.country-select,
+.planner-card select,
+.planner-card .country-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Poppins", sans-serif;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.85rem 2rem 0.85rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="%2394A3B8"><path d="M4 6l4 4 4-4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+}
+.ddi-select:focus,
+.planner-card select.country-select:focus,
+.planner-card select:focus,
+.planner-card .country-select:focus {
+  border-color: #3ddc84;
+  box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.2);
+  background-color: rgba(0, 0, 0, 0.28);
+}
+.ddi-select option,
+.planner-card select.country-select option,
+.planner-card select option,
+.planner-card .country-select option {
+  background-color: #0a1024;
+  color: #f1f5f9;
+  font-family: "Poppins", sans-serif;
+}
+.ddi-select option:checked,
+.planner-card select.country-select option:checked,
+.planner-card select option:checked,
+.planner-card .country-select option:checked,
+.ddi-select option:focus,
+.planner-card select.country-select option:focus,
+.planner-card select option:focus,
+.planner-card .country-select option:focus,
+.ddi-select option:hover,
+.planner-card select.country-select option:hover,
+.planner-card select option:hover,
+.planner-card .country-select option:hover {
+  background-color: rgba(61, 220, 132, 0.18);
+  color: #3ddc84;
+}
+#ddi-flag {
+  font-size: 1.25em;
+  line-height: 1;
+  align-self: center;
+}
+#phone-ddi.form-input {
+  width: 140px !important;
+  max-width: 140px !important;
+}
+#phone.form-input {
+  width: auto;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+/* --- 3.10. Footer (Rodapé) --- */
+footer {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ========================================
+   4. ANIMAÇÕES E ELEMENTOS DECORATIVOS
+   ======================================== */
+
+/* --- 4.1. Keyframes --- */
+@keyframes float-icon {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+/* --- 4.2. Classes de Animação --- */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--animation-delay, 0s);
+}
+.fade-in-up {
+  transform: translateY(30px);
+}
+.fade-in-right {
+  transform: translateX(-30px);
+}
+.fade-in-left {
+  transform: translateX(30px);
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- 4.3. Elementos Decorativos --- */
+.decorative-orb {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4d8af0;
+  filter: blur(15px);
+  box-shadow: 0 0 30px 10px linear-gradient(160deg, #0a1024 40%, #0f2c3e 100%);
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+  animation: pulse-glow 8s infinite ease-in-out alternate;
+}
+.orb-1 { width: 150px; height: 150px; top: 10%; left: 5%; animation-delay: -2s; }
+.orb-2 { width: 80px; height: 80px; top: 60%; right: 15%; animation-delay: 0s; }
+.orb-3 { width: 50px; height: 50px; top: 85%; left: 30%; animation-delay: -5s; }
+.orb-4 { width: 120px; height: 120px; top: 25%; right: 40%; animation-duration: 10s; }
+
+/* ========================================
+   5. CLASSES UTILITÁRIAS E OVERRIDES
+   ======================================== */
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: linear-gradient(160deg, #0a1024 40%, #0f2c3e 100%);
+  pointer-events: none;
+}
+
+/* As classes abaixo parecem ser overrides de um framework como Tailwind CSS. 
+  É uma boa prática agrupá-las para saber que elas têm alta especificidade.
+*/
+.bg-white\/5.ring-1.ring-white\/10 {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.text-yellow-400 {
+  color: #3ddc84 !important;
+}
+.bg-gradient-to-br.from-violet-600 {
+  background: #3ddc84 !important;
+}
+.border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.bg-gradient-to-r.from-violet-600 {
+  background: #3ddc84 !important;
+  color: #0a1024 !important;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(61, 220, 132, 0.25);
+}
+.bg-gradient-to-r.from-violet-600:hover {
+  opacity: 0.9;
+}
+.border.border-white\/10.bg-white\/5 {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.border.border-white\/10.bg-white\/5:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+
+/* ========================================
+   6. RESPONSIVIDADE (MEDIA QUERIES)
+   ======================================== */
+@media (max-width: 1370px) {
+  header .mx-auto.max-w-7xl,
+  #home,
+  #planos,
+  #features,
+  #how-it-works,
+  #locations,
+  #faq,
+  footer .mx-auto,
+  section.py-12.sm\:py-16 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 1140px) {
+  #plan-filter-mobile {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  #plan-filter-trigger {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+  }
+  #plan-filter-trigger:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  #plan-filter-trigger i {
+    transition: transform 0.2s ease;
+  }
+  #plan-filter-mobile.is-open #plan-filter-trigger i {
+    transform: rotate(180deg);
+  }
+  #plan-filter-mobile .tabs-wrapper {
+    display: none;
+    margin-top: 0.5rem;
+  }
+  #plan-filter-mobile.is-open .tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  #plan-filter-mobile .tab-btn {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.9rem;
+  }
+  #plan-filter-mobile .tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  #plan-filter-mobile .tab-btn.is-active {
+    background: #3ddc84;
+    color: #0a1024;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(61, 220, 132, 0.25);
+    border-color: transparent;
+  }
+}
+@media (min-width: 1141px) {
+  #plan-filter-mobile {
+    display: flex;
+    justify-content: center;
+  }
+  #plan-filter-tabs {
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+  }
+}
+@media (max-width: 1024px) {
+  .planner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .login-container-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .login-left-panel {
+    padding: 1rem;
+    min-height: 160px;
+    max-height: 220px;
+  }
+  .login-right-panel {
+    padding: 1.25rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+@media (max-width: 640px) {
+  .hero-art { display: none !important; }
+  .planner-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .planner-card { padding: 0.75rem; }
+  .planner-summary { grid-template-columns: 1fr 1fr; gap: 0.75rem; padding: 0.75rem; }
+  .planner-card .form-input,
+  .planner-card select.form-input {
+    font-size: 0.98rem;
+    padding: 0.7rem 2rem 0.7rem 0.8rem;
+  }
+  #home, #planos, #features, #how-it-works, #locations, #faq, footer .mx-auto, section.py-12.sm\:py-16 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #locations-modal .relative {
+    max-width: 99vw;
+    width: 99vw;
+    margin: 2vw auto;
+    padding: 1rem;
+    border-radius: 0.7rem;
+  }
+  #locations-modal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  #locations-modal .flex.mb-4 {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  #locations-modal h3 {
+    font-size: 1.2rem;
+  }
+  .orb-1 { width: 100px; height: 100px; top: 5%; left: -15%; }
+  .orb-2 { width: 70px; height: 70px; top: auto; bottom: 10%; right: -10%; }
+  .orb-3 { bottom: 15%; left: 20%; }
+  .orb-4 { display: none; }
+}
+@media (max-width: 480px) {
+  .planner-card { padding: 0.5rem 0.25rem; border-radius: 0.5rem; min-width: 0; }
+  .planner-grid { gap: 0.5rem; }
+  .planner-summary { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.5rem; border-radius: 0.5rem; }
+  .planner-card .form-input, .planner-card select.form-input, .planner-card .country-select {
+    font-size: 0.92rem;
+    padding: 0.65rem 1.5rem 0.65rem 0.7rem;
+    min-width: 0;
+    width: 100%;
+  }
+  #planos #fixed-plans {
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  #planos #fixed-plans > .grid {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  #planos .plan-type-card {
+    min-width: 280px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  #planos .plan-type-card:hover {
+    transform: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+  #planos #fixed-plans::-webkit-scrollbar { height: 8px; }
+  #planos #fixed-plans::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); border-radius: 8px; }
+  #planos #fixed-plans::-webkit-scrollbar-thumb { background: rgba(61, 220, 132, 0.35); border-radius: 8px; }
+  
+  label[for="phone"] + .flex.gap-2 {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  label[for="phone"] + .flex.gap-2 #ddi-flag {
+    order: 1;
+  }
+  label[for="phone"] + .flex.gap-2 #phone-ddi {
+    order: 2;
+    width: 120px !important;
+    max-width: 120px !important;
+  }
+  label[for="phone"] + .flex.gap-2 #phone {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+}

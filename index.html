@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProxyXpress - Proxies IPv4 Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="color-scheme" content="dark" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@7.0.0/css/flag-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+  <body class="min-h-screen text-slate-100 antialiased">
+    <div class="background-gradient"></div>
+
+    <header class="sticky top-0 z-40">
+      <div
+        class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between"
+      >
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img
+            src="assets/logo.png"
+            alt="ProxyXpress Logo"
+            style="width: 2.25rem; height: 2.25rem"
+          />
+          <div>
+            <span
+              style="
+                font-weight: 700;
+                font-size: 1.5rem;
+                letter-spacing: -0.5px;
+              "
+              >Proxy</span
+            ><span
+              style="
+                font-weight: 300;
+                font-size: 1.5rem;
+                letter-spacing: -0.5px;
+              "
+              >Xpress</span
+            >
+          </div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-6 text-sm">
+          <a href="#home" class="text-slate-300 hover:text-emerald-300">Home</a>
+          <a href="#planos" class="text-slate-300 hover:text-emerald-300"
+            >Planos</a
+          >
+          <a href="#features" class="text-slate-300 hover:text-emerald-300"
+            >Benefícios</a
+          >
+          <a href="#how-it-works" class="text-slate-300 hover:text-emerald-300"
+            >Como Funciona</a
+          >
+          <a href="#locations" class="text-slate-300 hover:text-emerald-300"
+            >Nossa Rede</a
+          >
+          <a href="#faq" class="text-slate-300 hover:text-emerald-300">FAQ</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a
+            href="login.html"
+            id="loginBtn"
+            class="hidden lg:inline-flex btn-primary items-center gap-2 text-sm py-2"
+          >
+            <i class="bx bx-user text-lg"></i>
+            <span class="hidden sm:inline">Login</span>
+          </a>
+          <button
+            id="mobileMenuBtn"
+            aria-label="Abrir menu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            class="lg:hidden p-2 rounded-lg border border-white/10 text-slate-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+          >
+            <i class="bx bx-menu text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+      <div
+        id="mobileOverlay"
+        class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"
+      ></div>
+      <nav
+        data-panel
+        class="absolute top-0 right-0 h-full w-72 max-w-[85%] bg-[#0A1024]/70 backdrop-blur-md border-l border-white/10 p-5 flex flex-col gap-2 transform translate-x-full transition-transform duration-300 ease-out"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <div class="inline-flex items-center gap-2">
+            <img src="assets/logo.png" alt="ProxyXpress Logo" class="w-8 h-8" />
+            <span class="font-semibold">Menu</span>
+          </div>
+          <button
+            id="mobileMenuClose"
+            aria-label="Fechar menu"
+            class="p-2 rounded-lg text-slate-300 hover:bg-white/10"
+          >
+            <i class="bx bx-x text-2xl"></i>
+          </button>
+        </div>
+        <a
+          href="#home"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >Home</a
+        >
+        <a
+          href="#planos"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >Planos</a
+        >
+        <a
+          href="#features"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >Benefícios</a
+        >
+        <a
+          href="#how-it-works"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >Como Funciona</a
+        >
+        <a
+          href="#locations"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >Nossa Rede</a
+        >
+        <a
+          href="#faq"
+          class="px-3 py-2 rounded-md hover:bg-white/5 text-slate-200"
+          >FAQ</a
+        >
+        <hr class="my-2 border-white/10" />
+        <a href="login.html" class="btn-primary text-center py-2">Login</a>
+      </nav>
+    </div>
+
+    <section
+      id="home"
+      class="relative overflow-hidden py-16 sm:py-20 md:py-28"
+    >
+      <div class="decorative-orb orb-1"></div>
+      <div class="decorative-orb orb-2"></div>
+      <div class="decorative-orb orb-3"></div>
+      <div class="decorative-orb orb-4"></div>
+
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div class="animate-on-scroll fade-in-right relative z-10 text-center sm:text-left">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              Proxies IPv4 Premium para suas redes sociais
+            </h1>
+            <p class="mt-4 text-slate-300 max-w-xl text-lg mx-auto sm:mx-0">
+              Aumente suas conexões com proxies de alto desempenho e segurança
+              incomparável.
+            </p>
+            <div class="mt-8 flex flex-col items-center sm:flex-row sm:justify-start gap-4">
+              <a href="#planos" class="btn-primary w-full sm:w-auto">
+                Testar Agora
+              </a>
+              <a href="#features" class="btn-secondary w-full sm:w-auto">
+                Benefícios
+              </a>
+            </div>
+          </div>
+<figure
+    class="hero-art relative x-full h-full animate-on-scroll fade-in-left hidden md:block"
+>
+    <img
+        src="assets/hero2.png"
+        alt="Ilustração de um monitor com gráficos e proxies"
+    />
+       </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="py-12 sm:py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="mb-10 text-center">
+          <h2 class="text-3xl sm:text-4xl font-extrabold">Planos e preços</h2>
+          <p class="text-slate-400 mt-2">
+            Escolha um pacote pronto ou personalize do seu jeito.
+          </p>
+        </div>
+
+        <div id="plan-filter-mobile" class="lg:mb-0 mb-2">
+          <button id="plan-filter-trigger" class="lg:hidden">
+            <span id="plan-filter-current">Selecionar tipo de plano</span>
+            <i class="bx bx-chevron-down text-xl"></i>
+          </button>
+          <div id="plan-filter-tabs" class="tabs-wrapper mb-8"></div>
+        </div>
+
+        <div id="fixed-plans" class="space-y-10">
+          </div>
+        <div
+          id="plans-scrollbar"
+          class="md:hidden mt-3 h-1.5 w-full rounded bg-white/10 overflow-hidden invisible cursor-pointer"
+        >
+          <div
+            id="plans-scrollbar-thumb"
+            class="h-full bg-emerald-400/70"
+            style="width: 0%; transform: translateX(0%)"
+          ></div>
+        </div>
+
+        <div id="custom-planner" class="hidden">
+          <div class="planner-card">
+            <div class="planner-grid">
+              <div>
+                <label class="form-label">Tipo de Proxy</label>
+                <select id="cp-type" class="form-input">
+                  <option value="ipv4_dc">Datacenter IPv4</option>
+                  <option value="ipv6_dc">Datacenter IPv6</option>
+                  <option value="res_static">Residenciais estáticos</option>
+                  <option value="res_ipv6_static">
+                    IPv6 residenciais estáticos
+                  </option>
+                  <option value="res_rot">Residenciais rotativos</option>
+                  <option value="mobile_static">Móveis estáticos</option>
+                  <option value="mobile_rot">Móveis rotativos</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">País de origem</label>
+                <select id="cp-country" class="form-input">
+                  <option>Brasil</option>
+                  <option>Estados Unidos</option>
+                  <option>França</option>
+                  <option>Alemanha</option>
+                  <option>Reino Unido</option>
+                  <option>Canadá</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">Quantidade</label>
+                <input
+                  id="cp-qty"
+                  type="number"
+                  min="1"
+                  max="5000"
+                  value="200"
+                  class="form-input"
+                />
+              </div>
+
+              <div>
+                <label class="form-label">Tempo de assinatura</label>
+                <select id="cp-term" class="form-input">
+                  <option value="1">1 mês</option>
+                  <option value="3">3 meses (5% OFF)</option>
+                  <option value="12">12 meses (15% OFF)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="planner-summary">
+              <div>
+                <p class="text-slate-400 text-sm">Preço por unidade</p>
+                <p id="cp-unit" class="summary-figure">R$ 0,00</p>
+              </div>
+              <div>
+                <p class="text-slate-400 text-sm">Subtotal</p>
+                <p id="cp-subtotal" class="summary-figure">R$ 0,00</p>
+              </div>
+              <div>
+                <p class="text-slate-400 text-sm">Desconto</p>
+                <p id="cp-discount" class="summary-figure">0%</p>
+              </div>
+              <div>
+                <p class="text-slate-400 text-sm">Total</p>
+                <p id="cp-total" class="summary-figure emphasis">R$ 0,00</p>
+              </div>
+            </div>
+
+            <div class="text-right mt-6">
+              <button class="btn-primary px-6">Contratar agora</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="mx-auto max-w-7xl px-4 py-10 sm:py-12 md:py-16">
+      <header class="mb-8 md:mb-10 text-center animate-on-scroll fade-in-up">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Benefícios</h2>
+        <p class="text-slate-400 mt-2">Por que escolher nossos proxies</p>
+      </header>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="feature-card-simple animate-on-scroll fade-in-up">
+          <i class="bx bx-rocket text-4xl text-emerald-400 mb-3"></i>
+          <h3 class="font-semibold text-lg mb-1">Alta Performance</h3>
+          <p class="text-slate-400 text-sm">
+            Baixa latência e alta disponibilidade para suas operações.
+          </p>
+        </div>
+        <div
+          class="feature-card-simple animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.05s"
+        >
+          <i class="bx bx-lock-alt text-4xl text-emerald-400 mb-3"></i>
+          <h3 class="font-semibold text-lg mb-1">Segurança</h3>
+          <p class="text-slate-400 text-sm">
+            IPs dedicados e camadas extras de proteção.
+          </p>
+        </div>
+        <div
+          class="feature-card-simple animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.1s"
+        >
+          <i class="bx bx-globe text-4xl text-emerald-400 mb-3"></i>
+          <h3 class="font-semibold text-lg mb-1">Cobertura Global</h3>
+          <p class="text-slate-400 text-sm">
+            Diversas localizações para atender diferentes necessidades.
+          </p>
+        </div>
+        <div
+          class="feature-card-simple animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.15s"
+        >
+          <i class="bx bx-headphone text-4xl text-emerald-400 mb-3"></i>
+          <h3 class="font-semibold text-lg mb-1">Suporte Rápido</h3>
+          <p class="text-slate-400 text-sm">
+            Atendimento ágil para resolver qualquer questão.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="mx-auto max-w-4xl px-4 py-10 sm:py-12 md:py-14">
+      <header class="mb-8 md:mb-10 text-center animate-on-scroll fade-in-up">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Como Funciona</h2>
+      </header>
+      <div class="space-y-8">
+        <div class="how-it-works-item animate-on-scroll fade-in-up">
+          <div class="how-it-works-number">1</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Escolha seu plano</h3>
+            <p class="text-slate-400">
+              Ative em segundos. Use em qualquer momento.
+            </p>
+          </div>
+        </div>
+        <div
+          class="how-it-works-item animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.1s"
+        >
+          <div class="how-it-works-number">2</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Ative em segundos</h3>
+            <p class="text-slate-400">
+              Use em qualquer dispositivo com nosso painel de controle.
+            </p>
+          </div>
+        </div>
+        <div
+          class="how-it-works-item animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.2s"
+        >
+          <div class="how-it-works-number">3</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Use em qualquer dispositivo</h3>
+            <p class="text-slate-400">
+              Teste só em nosso painel de controle e use em qualquer lugar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="locations" class="mx-auto max-w-7xl px-4 py-10 sm:py-12 md:py-16">
+      <h2
+        class="text-3xl sm:text-4xl font-extrabold text-center mb-4 animate-on-scroll fade-in-up"
+      >
+        Nossa Rede Global
+      </h2>
+      <p
+        class="text-center text-slate-400 mb-8 md:mb-12 max-w-2xl mx-auto animate-on-scroll fade-in-up"
+        style="--animation-delay: 0.1s"
+      >
+        Servidores em mais de 50 países para garantir que você tenha o melhor
+        desempenho.
+      </p>
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-12"
+      >
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+        >
+          <span class="fi fi-us text-2xl"></span>
+          <span class="font-medium">EUA</span>
+        </div>
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.05s"
+        >
+          <span class="fi fi-br text-2xl"></span>
+          <span class="font-medium">Brasil</span>
+        </div>
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.1s"
+        >
+          <span class="fi fi-ca text-2xl"></span>
+          <span class="font-medium">Canadá</span>
+        </div>
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.15s"
+        >
+          <span class="fi fi-gb text-2xl"></span>
+          <span class="font-medium">Reino Unido</span>
+        </div>
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.2s"
+        >
+          <span class="fi fi-de text-2xl"></span>
+          <span class="font-medium">Alemanha</span>
+        </div>
+        <div
+          class="bg-white/5 ring-1 ring-white/10 p-4 rounded-lg flex items-center gap-3 text-slate-200 animate-on-scroll fade-in-up"
+          style="--animation-delay: 0.25s"
+        >
+          <span class="fi fi-jp text-2xl"></span>
+          <span class="font-medium">Japão</span>
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          id="show-all-locations"
+          class="px-6 py-3 rounded-xl font-semibold transition flex items-center mx-auto bg-gradient-to-r from-violet-600 via-fuchsia-600 to-emerald-400 text-slate-950 hover:opacity-95"
+        >
+          <i class="bx bx-list-ul mr-2"></i> Ver lista completa de localizações
+        </button>
+      </div>
+    </section>
+
+    <div id="locations-modal" class="fixed inset-0 z-50 hidden">
+      <div
+        class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+      ></div>
+      <div
+        class="relative mx-auto my-16 max-w-3xl w-[95%] bg-[#0A1024]/95 rounded-xl p-6 shadow-2xl border border-white/10 overflow-y-auto max-h-[80vh]"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-2xl font-bold">Lista Completa de Localizações</h3>
+          <button
+            id="close-locations-modal"
+            class="text-slate-400 hover:text-emerald-400 text-2xl"
+          >
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+          id="locations-modal-list"
+        >
+          </div>
+      </div>
+    </div>
+    <section class="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12">
+        O que nossos clientes dizem
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/5 ring-1 ring-white/10 p-6 rounded-xl shadow-2xl">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+            </div>
+            <span class="text-slate-500 text-sm">2 semanas atrás</span>
+          </div>
+          <p class="text-slate-300 mb-4">
+            "Os proxies da ProxyMaster são incrivelmente rápidos e confiáveis.
+            Uso para minhas pesquisas de mercado e nunca tive problemas."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full ring-1 ring-white/10 mr-3 bg-gradient-to-br from-violet-600 to-fuchsia-500 grid place-items-center anim-glow"
+            >
+              <i class="bx bxs-user text-slate-100"></i>
+            </div>
+            <div>
+              <h4 class="font-bold">Carlos M.</h4>
+              <p class="text-slate-400 text-sm">Pesquisador de Mercado</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 ring-1 ring-white/10 p-6 rounded-xl shadow-2xl">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+            </div>
+            <span class="text-slate-500 text-sm">1 mês atrás</span>
+          </div>
+          <p class="text-slate-300 mb-4">
+            "Finalmente encontrei proxies que realmente funcionam para acessar
+            conteúdo geo-restrito. O suporte é excelente e sempre respondem
+            rápido."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full ring-1 ring-white/10 mr-3 bg-gradient-to-br from-violet-600 to-fuchsia-500 grid place-items-center anim-glow"
+            >
+              <i class="bx bxs-user text-slate-100"></i>
+            </div>
+            <div>
+              <h4 class="font-bold">Ana L.</h4>
+              <p class="text-slate-400 text-sm">Desenvolvedora Web</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 ring-1 ring-white/10 p-6 rounded-xl shadow-2xl">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star-half"></i>
+            </div>
+            <span class="text-slate-500 text-sm">3 meses atrás</span>
+          </div>
+          <p class="text-slate-300 mb-4">
+            "Usamos para nossa equipe de marketing digital e os resultados foram
+            impressionantes. A velocidade faz toda diferença em nossas
+            campanhas."
+          </p>
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-full ring-1 ring-white/10 mr-3 bg-gradient-to-br from-violet-600 to-fuchsia-500 grid place-items-center anim-glow"
+            >
+              <i class="bx bxs-user text-slate-100"></i>
+            </div>
+            <div>
+              <h4 class="font-bold">Ricardo T.</h4>
+              <p class="text-slate-400 text-sm">Diretor de Marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="mx-auto max-w-7xl px-4 py-12 sm:py-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12">
+        Perguntas Frequentes
+      </h2>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-4 border border-white/10 rounded-xl overflow-hidden">
+          <button
+            class="faq-question w-full px-6 py-4 text-left bg-white/5 hover:bg-white/10 transition font-medium flex justify-between items-center text-slate-200"
+          >
+            <span>O que é um proxy e como funciona?</span>
+            <i class="bx bx-chevron-down transition-transform duration-300"></i>
+          </button>
+          <div
+            class="faq-answer px-6 py-4 bg-transparent hidden text-slate-300"
+          >
+            <p class="text-slate-400">
+              Um proxy é um servidor intermediário que atua como ponte entre seu
+              dispositivo e a internet. Quando você usa um proxy, suas
+              solicitações de internet são roteadas através do servidor proxy,
+              que então encaminha a solicitação para o site de destino. Isso
+              oculta seu endereço IP real e pode permitir o acesso a conteúdo
+              geo-restrito.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-4 border border-white/10 rounded-xl overflow-hidden">
+          <button
+            class="faq-question w-full px-6 py-4 text-left bg-white/5 hover:bg-white/10 transition font-medium flex justify-between items-center text-slate-200"
+          >
+            <span
+              >Qual a diferença entre proxies compartilhados e dedicados?</span
+            >
+            <i class="bx bx-chevron-down transition-transform duration-300"></i>
+          </button>
+          <div
+            class="faq-answer px-6 py-4 bg-transparent hidden text-slate-300"
+          >
+            <p class="text-slate-400">
+              Proxies compartilhados são usados por múltiplos usuários
+              simultaneamente, o que pode resultar em velocidades mais lentas e
+              maior chance de bloqueios. Proxies dedicados são exclusivos para
+              um único usuário, oferecendo melhor desempenho, segurança e
+              confiabilidade. Todos os nossos proxies são dedicados para
+              garantir a melhor experiência.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-4 border border-white/10 rounded-xl overflow-hidden">
+          <button
+            class="faq-question w-full px-6 py-4 text-left bg-white/5 hover:bg-white/10 transition font-medium flex justify-between items-center text-slate-200"
+          >
+            <span>Como configuro o proxy no meu dispositivo?</span>
+            <i class="bx bx-chevron-down transition-transform duration-300"></i>
+          </button>
+          <div
+            class="faq-answer px-6 py-4 bg-transparent hidden text-slate-300"
+          >
+            <p class="text-slate-400">
+              Após a compra, você receberá detalhes de conexão (endereço IP,
+              porta, usuário e senha) por e-mail. A configuração varia por
+              dispositivo e navegador, mas geralmente envolve acessar as
+              configurações de rede ou proxy e inserir essas informações.
+              Fornecemos guias detalhados passo a passo para todas as
+              plataformas principais.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-4 border border-white/10 rounded-xl overflow-hidden">
+          <button
+            class="faq-question w-full px-6 py-4 text-left bg-white/5 hover:bg-white/10 transition font-medium flex justify-between items-center text-slate-200"
+          >
+            <span>Qual é a política de reembolso?</span>
+            <i class="bx bx-chevron-down transition-transform duration-300"></i>
+          </button>
+          <div
+            class="faq-answer px-6 py-4 bg-transparent hidden text-slate-300"
+          >
+            <p class="text-slate-400">
+              Oferecemos uma garantia de satisfação de 7 dias. Se você não
+              estiver satisfeito com nosso serviço dentro dos primeiros 7 dias
+              após a compra, reembolsaremos integralmente seu pagamento. Após
+              esse período, não oferecemos reembolsos, mas você pode cancelar
+              sua assinatura a qualquer momento.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-4 border border-white/10 rounded-xl overflow-hidden">
+          <button
+            class="faq-question w-full px-6 py-4 text-left bg-white/5 hover:bg-white/10 transition font-medium flex justify-between items-center text-slate-200"
+          >
+            <span
+              >Os proxies funcionam com Netflix e outros serviços de
+              streaming?</span
+            >
+            <i class="bx bx-chevron-down transition-transform duration-300"></i>
+          </button>
+          <div
+            class="faq-answer px-6 py-4 bg-transparent hidden text-slate-300"
+          >
+            <p class="text-slate-400">
+              Sim, muitos de nossos proxies funcionam com serviços de streaming
+              populares. No entanto, esses serviços frequentemente atualizam
+              seus sistemas de bloqueio. Monitoramos constantemente nossos
+              servidores e rotacionamos IPs quando necessário para manter o
+              acesso. Recomendamos testar diferentes localizações para encontrar
+              a que funciona melhor para o serviço desejado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gradient-bg text-white py-12 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 text-center">
+        <i
+          class="bx bx-rocket text-5xl text-emerald-300 anim-bounce mx-auto mb-4"
+        ></i>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">
+          Pronto para experimentar proxies de alta qualidade?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto text-slate-200">
+          Junte-se a milhares de clientes satisfeitos que já confiam na
+          ProxyMaster para suas necessidades de proxy.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-violet-600 via-fuchsia-600 to-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20"
+          >
+            Começar Agora
+          </button>
+          <button
+            class="px-8 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition"
+          >
+            Fale Conosco
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer id="suporte" class="border-t border-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-10">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="inline-flex items-center gap-3 mb-3">
+              <span class="brand-icon">
+                <i class="bx bx-shield-quarter text-xl"></i>
+              </span>
+              <span class="font-bold tracking-tight text-xl">ProxyXpress</span>
+            </div>
+            <p class="text-sm text-slate-400">
+              © 2025 ProxyXpress. Todos os direitos reservados.
+            </p>
+            <p class="text-sm text-slate-400 mt-1">Política de Privacidade</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">Links Úteis</h4>
+            <ul class="text-sm text-slate-400 space-y-2">
+              <li><a href="#" class="hover:text-green-400">Home</a></li>
+              <li><a href="#planos" class="hover:text-green-400">Planos</a></li>
+              <li>
+                <a href="#how-it-works" class="hover:text-green-400"
+                  >Como Funciona</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">Suporte</h4>
+            <ul class="text-sm text-slate-400 space-y-2">
+              <li><a href="#faq" class="hover:text-green-400">FAQ</a></li>
+              <li>
+                <a href="#" class="hover:text-green-400">História da Rede</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">Siga-nos</h4>
+            <div class="flex items-center gap-4 text-2xl">
+              <a href="#" class="text-slate-400 hover:text-green-400"
+                ><i class="bx bxl-facebook-square"></i
+              ></a>
+              <a href="#" class="text-slate-400 hover:text-green-400"
+                ><i class="bx bxl-twitter"></i
+              ></a>
+              <a href="#" class="text-slate-400 hover:text-green-400"
+                ><i class="bx bxl-instagram-alt"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+      // O CONTEÚDO DO SCRIPT PERMANECE O MESMO
+    </script>
+  </body>
+</html>

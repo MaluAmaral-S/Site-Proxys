@@ -183,7 +183,19 @@ body > header nav a.is-active::after {
   display: flex;
   flex-direction: column;
   min-height: 400px;
+  
 }
+/* --- Correção do Scrollbar Customizado Mobile --- */
+#plans-scrollbar {
+  position: relative; /* Define este como o container de referência */
+}
+
+#plans-scrollbar-thumb {
+  position: absolute; /* Posiciona o thumb em relação ao pai */
+  top: 0;
+  left: 0;
+}
+
 #planos #fixed-plans > .grid {
   justify-items: center;
   gap: 1.5rem;
@@ -793,4 +805,8 @@ footer {
     width: 100%;
     margin-top: 0.25rem;
   }
+}
+
+.plan-type-card{
+  min-height: 500px;
 }

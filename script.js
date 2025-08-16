@@ -328,9 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // --- LÓGICA DO OBSERVER CORRIGIDA ---
-        // Agora ele seleciona apenas a última seção visível, evitando múltiplos links ativos.
-const navObserver = new IntersectionObserver((entries) => {
+        const navObserver = new IntersectionObserver((entries) => {
             const visibleEntries = entries.filter(entry => entry.isIntersecting);
             if (visibleEntries.length > 0) {
                 const lastVisibleEntry = visibleEntries[visibleEntries.length - 1];
@@ -338,8 +336,8 @@ const navObserver = new IntersectionObserver((entries) => {
             }
         }, { 
             root: null,
-            threshold: 0.1, // ALTERADO DE 0.4 PARA 0.1
-            rootMargin: '-80px 0px -25% 0px' // ALTERADO DE -40% PARA -25%
+            threshold: 0.1,
+            rootMargin: '-80px 0px -25% 0px'
         });
 
         sections.forEach(sec => navObserver.observe(sec));
@@ -347,16 +345,56 @@ const navObserver = new IntersectionObserver((entries) => {
   }
 
   // ==========================================================
-  // INICIALIZAÇÃO DE TODAS AS FUNÇÕES (ORDEM CORRIGIDA)
+  // LÓGICA DO SCROLLBAR CUSTOMIZADO
+  // ==========================================================
+  function setupCustomScrollbar() {
+    const plansContainer = document.getElementById('fixed-plans');
+    const scrollbarThumb = document.getElementById('plans-scrollbar-thumb');
+    const scrollbar = document.getElementById('plans-scrollbar');
+
+    if (!plansContainer || !scrollbarThumb || !scrollbar) {
+      return; // Se os elementos não existirem, não faz nada
+    }
+
+    const updateThumb = () => {
+      const scrollLeft = plansContainer.scrollLeft;
+      const scrollWidth = plansContainer.scrollWidth;
+      const clientWidth = plansContainer.clientWidth;
+
+      if (scrollWidth <= clientWidth) {
+        scrollbar.style.display = 'none';
+        return;
+      }
+      
+      scrollbar.style.display = 'block';
+
+      const thumbWidth = (clientWidth / scrollWidth) * 100;
+      const thumbPosition = (scrollLeft / (scrollWidth - clientWidth)) * (100 - thumbWidth);
+
+      scrollbarThumb.style.width = `${thumbWidth}%`;
+      scrollbarThumb.style.transform = `translateX(${thumbPosition}%)`;
+    };
+
+    plansContainer.addEventListener('scroll', updateThumb);
+    window.addEventListener('resize', updateThumb);
+    
+    // Usamos um observer para chamar o updateThumb quando os cards forem renderizados
+    const observer = new MutationObserver(() => {
+        updateThumb();
+    });
+    observer.observe(plansContainer, { childList: true });
+
+    // Chamada inicial
+    updateThumb();
+  }
+
+  // ==========================================================
+  // INICIALIZAÇÃO DE TODAS AS FUNÇÕES
   // ==========================================================
   
-  // 1. Primeiro, renderizamos os planos e preparamos a calculadora.
-  //    Isso garante que a seção #planos tenha sua altura final.
   renderPlanFilterTabs();
   wireCustomPlanner();
-  
-  // 2. AGORA, com a página totalmente construída, configuramos o observer da navbar.
-  //    Ele agora "verá" a altura correta da seção de planos.
   setupNavObserver();
+  setupCustomScrollbar(); // Ativando a nova função
 
 });

@@ -188,14 +188,18 @@ body > header nav a.is-active::after {
 #plans-scrollbar {
   position: relative; 
 }
+#plans-scrollbar.is-dragging {
+  cursor: grabbing;
+}
 #plans-scrollbar-thumb {
   position: absolute;
   top: 0;
   left: 0;
+  cursor: grab;
 }
 
-#planos #fixed-plans {
-  /* No desktop, o JS insere um .grid aqui. No mobile, as regras abaixo se aplicam. */
+/* CORREÇÃO 1: Adicionado ":not(.hidden)" */
+#planos #fixed-plans:not(.hidden) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
@@ -695,13 +699,14 @@ footer {
   }
 }
 @media (max-width: 1024px) {
-    #planos #fixed-plans {
+    #planos #fixed-plans:not(.hidden) {
         grid-template-columns: repeat(2, 1fr);
     }
   .planner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 767px) {
-  #planos #fixed-plans {
+  /* CORREÇÃO 2: Adicionado ":not(.hidden)" */
+  #planos #fixed-plans:not(.hidden) {
     display: flex;
     flex-direction: row;
     gap: 0.75rem;

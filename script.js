@@ -227,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!key) { mount.innerHTML = ''; return; }
 
     mount.innerHTML = `
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         ${PLAN_QUANTITIES.map(qty => `
           <div class="plan-type-card">
             <div class="flex items-center gap-3 mb-2">
@@ -259,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `).join('')}
-      </div>
     `;
 
     mount.querySelectorAll('.plan-type-card').forEach(card => {
@@ -353,14 +351,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollbar = document.getElementById('plans-scrollbar');
 
     if (!plansContainer || !scrollbarThumb || !scrollbar) {
-      return; // Se os elementos não existirem, não faz nada
+      return;
     }
 
     const updateThumb = () => {
       const scrollLeft = plansContainer.scrollLeft;
       const scrollWidth = plansContainer.scrollWidth;
       const clientWidth = plansContainer.clientWidth;
-
+      
       if (scrollWidth <= clientWidth) {
         scrollbar.style.display = 'none';
         return;
@@ -369,23 +367,68 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollbar.style.display = 'block';
 
       const thumbWidth = (clientWidth / scrollWidth) * 100;
-      const thumbPosition = (scrollLeft / (scrollWidth - clientWidth)) * (100 - thumbWidth);
+      const scrollableWidth = scrollWidth - clientWidth;
+      // Adicionamos uma verificação para evitar divisão por zero se scrollableWidth for 0
+      const scrollPercentage = scrollableWidth > 0 ? (scrollLeft / scrollableWidth) : 0;
+      const thumbPosition = scrollPercentage * (100 - thumbWidth);
 
       scrollbarThumb.style.width = `${thumbWidth}%`;
-      scrollbarThumb.style.transform = `translateX(${thumbPosition}%)`;
+      scrollbarThumb.style.left = `${thumbPosition}%`;
     };
 
     plansContainer.addEventListener('scroll', updateThumb);
     window.addEventListener('resize', updateThumb);
     
-    // Usamos um observer para chamar o updateThumb quando os cards forem renderizados
     const observer = new MutationObserver(() => {
         updateThumb();
     });
     observer.observe(plansContainer, { childList: true });
 
-    // Chamada inicial
     updateThumb();
+
+    // --- INÍCIO DA NOVA LÓGICA DE ARRASTAR O SCROLL ---
+    
+    let isDragging = false;
+    let startX;
+    let scrollLeftStart;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      // pageX funciona para mouse e para o primeiro dedo no touch
+      startX = e.pageX || e.touches[0].pageX;
+      scrollLeftStart = plansContainer.scrollLeft;
+      scrollbar.classList.add('is-dragging'); // Adiciona classe para feedback visual
+      e.preventDefault(); // Previne comportamentos padrão como selecionar texto
+    };
+
+    const doDrag = (e) => {
+      if (!isDragging) return;
+      const x = e.pageX || e.touches[0].pageX;
+      const deltaX = x - startX;
+      
+      // A "mágica" está aqui: convertemos o movimento do mouse/dedo na barra
+      // em um movimento de rolagem proporcional no container de cards.
+      const scrollDelta = deltaX * (plansContainer.scrollWidth / plansContainer.clientWidth);
+      
+      plansContainer.scrollLeft = scrollLeftStart + scrollDelta;
+    };
+
+    const stopDrag = () => {
+      isDragging = false;
+      scrollbar.classList.remove('is-dragging');
+    };
+
+    // Eventos de Mouse
+    scrollbarThumb.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', doDrag);
+    document.addEventListener('mouseup', stopDrag);
+    
+    // Eventos de Toque para Celulares
+    scrollbarThumb.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', doDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    // --- FIM DA NOVA LÓGICA DE ARRASTAR O SCROLL ---
   }
 
   // ==========================================================
@@ -395,6 +438,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPlanFilterTabs();
   wireCustomPlanner();
   setupNavObserver();
-  setupCustomScrollbar(); // Ativando a nova função
+  setupCustomScrollbar();
 
 });

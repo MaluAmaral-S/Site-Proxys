@@ -39,11 +39,10 @@ body {
 }
 
 /* --- Títulos de Seção --- */
-/* O bloco @supports que aplicava o gradiente verde foi removido */
 #planos h2,
 #features h2,
 #how-it-works h2 {
-  color: #f1f5f9; /* Esta regra agora define a cor final como branca */
+  color: #f1f5f9;
 }
 
 /* ========================================
@@ -182,23 +181,25 @@ body > header nav a.is-active::after {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  min-height: 400px;
-  
-}
-/* --- Correção do Scrollbar Customizado Mobile --- */
-#plans-scrollbar {
-  position: relative; /* Define este como o container de referência */
+  min-height: 500px;
 }
 
+/* --- Barra de Rolagem Customizada Mobile --- */
+#plans-scrollbar {
+  position: relative; 
+}
 #plans-scrollbar-thumb {
-  position: absolute; /* Posiciona o thumb em relação ao pai */
+  position: absolute;
   top: 0;
   left: 0;
 }
 
-#planos #fixed-plans > .grid {
-  justify-items: center;
+#planos #fixed-plans {
+  /* No desktop, o JS insere um .grid aqui. No mobile, as regras abaixo se aplicam. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  justify-items: center;
 }
 #planos .plan-type-header {
   display: flex;
@@ -694,9 +695,30 @@ footer {
   }
 }
 @media (max-width: 1024px) {
+    #planos #fixed-plans {
+        grid-template-columns: repeat(2, 1fr);
+    }
   .planner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  #planos #fixed-plans {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #planos #fixed-plans::-webkit-scrollbar {
+    display: none;
+  }
+  #planos .plan-type-card {
+    min-width: 280px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
   .login-container-split {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -712,6 +734,7 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
+
 @media (max-width: 640px) {
   .hero-art { display: none !important; }
   .planner-grid { grid-template-columns: 1fr; gap: 0.75rem; }
@@ -762,30 +785,7 @@ footer {
     min-width: 0;
     width: 100%;
   }
-  #planos #fixed-plans {
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-  #planos #fixed-plans > .grid {
-    display: flex;
-    flex-direction: row;
-    gap: 0.75rem;
-  }
-  #planos .plan-type-card {
-    min-width: 280px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
-  #planos .plan-type-card:hover {
-    transform: none;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  }
-  #planos #fixed-plans::-webkit-scrollbar { height: 8px; }
-  #planos #fixed-plans::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); border-radius: 8px; }
-  #planos #fixed-plans::-webkit-scrollbar-thumb { background: rgba(61, 220, 132, 0.35); border-radius: 8px; }
-  
+
   label[for="phone"] + .flex.gap-2 {
     flex-wrap: wrap;
     align-items: center;
@@ -805,8 +805,4 @@ footer {
     width: 100%;
     margin-top: 0.25rem;
   }
-}
-
-.plan-type-card{
-  min-height: 500px;
 }

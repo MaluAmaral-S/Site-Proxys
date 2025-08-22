@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const countries = [
         { code: "us", name: "Estados Unidos" }, { code: "br", name: "Brasil" }, { code: "ca", name: "Canadá" },
         { code: "gb", name: "Reino Unido" }, { code: "de", name: "Alemanha" }, { code: "jp", name: "Japão" },
-        { code: "fr", name: "França" }, { code: "es", name: "Espanha" }, { code: "it", name: "Itália" },
+        { code: "fr", name: "França" }, { code: "es", "name": "Espanha" }, { code: "it", name: "Itália" },
         { code: "ru", name: "Rússia" }, { code: "in", name: "Índia" }, { code: "cn", name: "China" },
         { code: "au", name: "Austrália" }, { code: "ar", name: "Argentina" }, { code: "mx", name: "México" },
         { code: "nl", name: "Holanda" }, { code: "tr", name: "Turquia" }, { code: "za", name: "África do Sul" },
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { 
             root: null,
             threshold: 0.1,
-            rootMargin: '-80px 0px -25% 0px'
+            rootMargin: '-80px 0px -80% 0px'
         });
 
         sections.forEach(sec => navObserver.observe(sec));

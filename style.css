@@ -45,6 +45,12 @@ body {
   color: #f1f5f9;
 }
 
+/* --- Distanciamento para Links Âncora (Navbar Fixa) --- */
+#home, #features, #planos, #how-it-works, #locations, #faq {
+  scroll-margin-top: 80px; /* Ajusta a posição da rolagem para compensar o header */
+}
+
+
 /* ========================================
    3. COMPONENTES DE UI
    ======================================== */
@@ -107,7 +113,6 @@ body > header nav a.is-active::after {
 /* --- 3.3. Seção Hero (Principal) --- */
 #home {
   background-color: rgba(0, 0, 0, 0.18);
-  overflow-x: hidden; /* Previne o corte de conteúdo na altura */
 }
 .hero-art {
   background: transparent !important;
@@ -498,20 +503,26 @@ footer a:hover {
 /* Para telas de PC largas */
 @media (min-width: 1440px) {
   #home {
-    /* Reduz a altura do hero em telas largas */
-    padding-top: 5rem;
-    padding-bottom: 5rem;
     padding-left: 2rem;
     padding-right: 2rem;
   }
   
-  /* Aumenta a área de conteúdo e o padding lateral dos elementos do hero */
   #home .mx-auto.max-w-7xl {
-    max-width: 88rem; /* Aumenta a largura máxima para 1408px */
-    padding-left: 3rem;  /* Aumenta o padding interno */
-    padding-right: 3rem; /* Aumenta o padding interno */
+    max-width: 88rem; 
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
+
+/* CORREÇÃO DEFINITIVA: Para telas de laptop (largas e baixas) como 1366x768 */
+@media (min-width: 1025px) and (max-height: 800px) {
+  #home {
+    /* Reduz drasticamente o padding vertical para evitar corte */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
 
 @media (max-width: 1370px) {
   header .mx-auto.max-w-7xl,

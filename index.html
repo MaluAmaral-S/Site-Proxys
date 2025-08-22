@@ -52,7 +52,9 @@
         </a>
         <nav class="hidden lg:flex items-center gap-6 text-sm">
           <a href="#home" class="text-slate-300 hover:text-emerald-300">Home</a>
+
           <a href="#planos" class="text-slate-300 hover:text-emerald-300"
+
             >Planos</a
           >
           <a href="#features" class="text-slate-300 hover:text-emerald-300"
@@ -145,7 +147,7 @@
       </nav>
     </div>
 
-    <section id="home" class="relative overflow-hidden py-16 sm:py-20 md:py-28">
+    <section id="home" class="relative py-16 sm:py-20 md:py-24">
       <div class="decorative-orb orb-1"></div>
       <div class="decorative-orb orb-2"></div>
       <div class="decorative-orb orb-3"></div>
@@ -157,20 +159,19 @@
             class="animate-on-scroll fade-in-right relative z-10 text-center sm:text-left"
           >
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-              Proxies IPv4 Premium para suas redes sociais
+              Não vendemos proxies. Vendemos performance.
             </h1>
             <p class="mt-4 text-slate-300 max-w-xl text-lg mx-auto sm:mx-0">
-              Aumente suas conexões com proxies de alto desempenho e segurança
-              incomparável.
+              ProxyXpress nasceu para quem joga grande, nada de instabilidade, nada de suporte lento, nada de limites. É plugou, rodeu.
             </p>
             <div
               class="mt-8 flex flex-col items-center sm:flex-row sm:justify-start gap-4"
             >
               <a href="#planos" class="btn-primary w-full sm:w-auto">
-                Testar Agora
+                Contratar Agora
               </a>
-              <a href="#features" class="btn-secondary w-full sm:w-auto">
-                Benefícios
+              <a href="#planos" class="btn-secondary w-full sm:w-auto">
+                Conheça os planos
               </a>
             </div>
           </div>
@@ -186,156 +187,81 @@
       </div>
     </section>
 
-    <section id="planos" class="py-12 sm:py-16 md:py-20">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="mb-10 text-center">
-          <h2 class="text-3xl sm:text-4xl font-extrabold">Planos e preços</h2>
-          <p class="text-slate-400 mt-2">
-            Escolha um pacote pronto ou personalize do seu jeito.
-          </p>
-        </div>
-
-        <div id="plan-filter-mobile" class="lg:mb-0 mb-2">
-          <button id="plan-filter-trigger" class="lg:hidden">
-            <span id="plan-filter-current">Selecionar tipo de plano</span>
-            <i class="bx bx-chevron-down text-xl"></i>
-          </button>
-          <div id="plan-filter-tabs" class="tabs-wrapper mb-8"></div>
-        </div>
-
-        <div id="fixed-plans" class="flex flex-row gap-3 overflow-x-auto"></div>
-        
-        <div id="custom-planner" class="hidden">
-          <div class="planner-card">
-            <div class="planner-grid">
-              <div>
-                <label class="form-label">Tipo de Proxy</label>
-                <select id="cp-type" class="form-input">
-                  <option value="ipv4_dc">Datacenter IPv4</option>
-                  <option value="ipv6_dc">Datacenter IPv6</option>
-                  <option value="res_static">Residenciais estáticos</option>
-                  <option value="res_ipv6_static">
-                    IPv6 residenciais estáticos
-                  </option>
-                  <option value="res_rot">Residenciais rotativos</option>
-                  <option value="mobile_static">Móveis estáticos</option>
-                  <option value="mobile_rot">Móveis rotativos</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="form-label">País de origem</label>
-                <select id="cp-country" class="form-input">
-                  <option>Brasil</option>
-                  <option>Estados Unidos</option>
-                  <option>França</option>
-                  <option>Alemanha</option>
-                  <option>Reino Unido</option>
-                  <option>Canadá</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="form-label">Quantidade</label>
-                <input
-                  id="cp-qty"
-                  type="number"
-                  min="1"
-                  max="5000"
-                  value="200"
-                  class="form-input"
-                />
-              </div>
-
-              <div>
-                <label class="form-label">Tempo de assinatura</label>
-                <select id="cp-term" class="form-input">
-                  <option value="1">1 mês</option>
-                  <option value="3">3 meses (5% OFF)</option>
-                  <option value="12">12 meses (15% OFF)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="planner-summary">
-              <div>
-                <p class="text-slate-400 text-sm">Preço por unidade</p>
-                <p id="cp-unit" class="summary-figure">R$ 0,00</p>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">Subtotal</p>
-                <p id="cp-subtotal" class="summary-figure">R$ 0,00</p>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">Desconto</p>
-                <p id="cp-discount" class="summary-figure">0%</p>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">Total</p>
-                <p id="cp-total" class="summary-figure emphasis">R$ 0,00</p>
-              </div>
-            </div>
-
-            <div class="text-right mt-6">
-              <button class="btn-primary px-6">Contratar agora</button>
-            </div>
-          </div>
-        </div>
-      </div> <div id="plans-scrollbar" class="md:hidden mt-6 h-1.5 w-full bg-white/10 overflow-hidden cursor-pointer">
-        <div
-          id="plans-scrollbar-thumb"
-          class="h-full bg-emerald-400/70 rounded"
-        ></div>
-      </div>
-
-    </section>
-
     <section
       id="features"
       class="mx-auto max-w-7xl px-4 py-10 sm:py-12 md:py-16"
     >
       <header class="mb-8 md:mb-10 text-center animate-on-scroll fade-in-up">
-        <h2 class="text-3xl sm:text-4xl font-extrabold">Benefícios</h2>
-        <p class="text-slate-400 mt-2">Por que escolher nossos proxies</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Por que ProxyXpress?</h2>
       </header>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="feature-card-simple animate-on-scroll fade-in-up">
-          <i class="bx bx-rocket text-4xl text-emerald-400 mb-3"></i>
-          <h3 class="font-semibold text-lg mb-1">Alta Performance</h3>
-          <p class="text-slate-400 text-sm">
-            Baixa latência e alta disponibilidade para suas operações.
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="benefit-card animate-on-scroll fade-in-up" style="--animation-delay: 0s">
+            <i class='bx bxs-rocket'></i>
+            <div>
+                <h3>Velocidade real</h3>
+                <p>IPs de performance testados e prontos para uso.</p>
+            </div>
+        </div>
+        <div class="benefit-card animate-on-scroll fade-in-up" style="--animation-delay: 0.1s">
+            <i class='bx bxs-server' ></i>
+            <div>
+                <h3>Estabilidade total</h3>
+                <p>Performance e estabilidade para quem não para.</p>
+            </div>
+        </div>
+        <div class="benefit-card animate-on-scroll fade-in-up" style="--animation-delay: 0.2s">
+            <i class='bx bxs-joystick-alt' ></i>
+            <div>
+                <h3>Controle na sua mão</h3>
+                <p>Confiabilidade de IPs para as ocasiões mais exaustivas.</p>
+            </div>
+        </div>
+        <div class="benefit-card animate-on-scroll fade-in-up" style="--animation-delay: 0.3s">
+            <i class='bx bx-sync' ></i>
+            <div>
+                <h3>Rotativo</h3>
+                <p>Fortaleça suas operações com IPs rotativos.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="py-12 sm:py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="mb-10 text-center">
+          <h2 class="text-3xl sm:text-4xl font-extrabold">Escolha de quem não aceita desculpas.</h2>
+          <p class="text-slate-400 mt-2 max-w-2xl mx-auto">
+            Profissionais de tráfego pago, agências e players de alto volume confiam na ProxyXpress para rodar suas operações sem gargalos.
           </p>
         </div>
-        <div
-          class="feature-card-simple animate-on-scroll fade-in-up"
-          style="--animation-delay: 0.05s"
-        >
-          <i class="bx bx-lock-alt text-4xl text-emerald-400 mb-3"></i>
-          <h3 class="font-semibold text-lg mb-1">Segurança</h3>
-          <p class="text-slate-400 text-sm">
-            IPs dedicados e camadas extras de proteção.
-          </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="product-card">
+                <i class='bx bx-user-voice'></i>
+                <h3>IPv4 para Redes Sociais</h3>
+                <p>Indicado para Facebook, TikTok, Google Ads etc.</p>
+                <a href="register.html" class="btn-primary">Contratar Agora</a>
+            </div>
+            <div class="product-card">
+                <i class='bx bx-line-chart'></i>
+                <h3>IPv6 para Apostas</h3>
+                <p>Ideal para casas de apostas e alto volume.</p>
+                <a href="register.html" class="btn-primary">Contratar Agora</a>
+            </div>
+            <div class="product-card">
+                <i class='bx bx-home-heart'></i>
+                <h3>Proxy Residencial</h3>
+                <p>IPs reais para máxima confiabilidade e discrição.</p>
+                <a href="register.html" class="btn-primary">Contratar Agora</a>
+            </div>
+            <div class="product-card">
+                <i class='bx bx-bot'></i>
+                <h3>Proxy Rotativo</h3>
+                <p>Ideal para automação e operações em larga escala.</p>
+                <a href="register.html" class="btn-primary">Contratar Agora</a>
+            </div>
         </div>
-        <div
-          class="feature-card-simple animate-on-scroll fade-in-up"
-          style="--animation-delay: 0.1s"
-        >
-          <i class="bx bx-globe text-4xl text-emerald-400 mb-3"></i>
-          <h3 class="font-semibold text-lg mb-1">Cobertura Global</h3>
-          <p class="text-slate-400 text-sm">
-            Diversas localizações para atender diferentes necessidades.
-          </p>
-        </div>
-        <div
-          class="feature-card-simple animate-on-scroll fade-in-up"
-          style="--animation-delay: 0.15s"
-        >
-          <i class="bx bx-headphone text-4xl text-emerald-400 mb-3"></i>
-          <h3 class="font-semibold text-lg mb-1">Suporte Rápido</h3>
-          <p class="text-slate-400 text-sm">
-            Atendimento ágil para resolver qualquer questão.
-          </p>
-        </div>
+
       </div>
     </section>
 
@@ -494,7 +420,7 @@
             <span class="text-slate-500 text-sm">2 semanas atrás</span>
           </div>
           <p class="text-slate-300 mb-4">
-            "Os proxies da ProxyXpress são incrivelmente rápidos e confiáveis.
+            "Os proxies da ProxyMaster são incrivelmente rápidos e confiáveis.
             Uso para minhas pesquisas de mercado e nunca tive problemas."
           </p>
           <div class="flex items-center">
@@ -689,27 +615,19 @@
 
     <section class="gradient-bg text-white py-12 sm:py-16">
       <div class="mx-auto max-w-7xl px-4 text-center">
-        <i
+         <i
           class="bx bx-rocket text-5xl text-emerald-300 anim-bounce mx-auto mb-4"
         ></i>
         <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">
-          Pronto para experimentar proxies de alta qualidade?
+          Enquanto eles travam, você avança.
         </h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto text-slate-200">
-          Junte-se a milhares de clientes satisfeitos que já confiam na
-          ProxyXpress para suas necessidades de proxy.
-        </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <button
+          <a
+            href="#planos"
             class="px-8 py-3 rounded-xl font-semibold bg-gradient-to-r from-violet-600 via-fuchsia-600 to-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/20"
           >
-            Começar Agora
-          </button>
-          <button
-            class="px-8 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition"
-          >
-            Fale Conosco
-          </button>
+            Contratar Agora
+          </a>
         </div>
       </div>
     </section>

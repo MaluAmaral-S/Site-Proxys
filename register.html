@@ -54,7 +54,7 @@
     background-color: rgba(10, 16, 36, 0.98); /* fundo consistente com o site */
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 0.5rem;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(61, 220, 132, 0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(34, 211, 238, 0.08);
   }
   .ddi-float select {
     display: block;
@@ -73,8 +73,8 @@
   .ddi-float option:checked,
   .ddi-float option:focus,
   .ddi-float option:hover {
-    background-color: rgba(61, 220, 132, 0.18);
-    color: #3DDC84;
+    background-color: rgba(34, 211, 238, 0.18);
+    color: #22d3ee;
   }
   .ddi-float::-webkit-scrollbar { width: 8px; }
   .ddi-float::-webkit-scrollbar-track {
@@ -82,11 +82,11 @@
     border-radius: 8px;
   }
   .ddi-float::-webkit-scrollbar-thumb {
-    background: rgba(61, 220, 132, 0.35);
+    background: rgba(34, 211, 238, 0.35);
     border-radius: 8px;
   }
   .ddi-float::-webkit-scrollbar-thumb:hover {
-    background: rgba(61, 220, 132, 0.5);
+    background: rgba(34, 211, 238, 0.5);
   }
   </style>
 </head>
@@ -133,7 +133,6 @@
               <div class="flex gap-2">
                 <span id="ddi-flag" class="fi fis fi-br"></span>
                 <select id="phone-ddi" class="form-input ddi-select" style="max-width: 110px;">
-                  <!-- Américas -->
                   <option value="+55">+55 (BR)</option>
                   <option value="+1">+1 (US)</option>
                   <option value="+1">+1 (CA)</option>
@@ -157,7 +156,6 @@
                   <option value="+597">+597 (SR)</option>
                   <option value="+53">+53 (CU)</option>
                   
-                  <!-- Europa -->
                   <option value="+44">+44 (UK)</option>
                   <option value="+353">+353 (IE)</option>
                   <option value="+49">+49 (DE)</option>
@@ -193,7 +191,6 @@
                   <option value="+371">+371 (LV)</option>
                   <option value="+370">+370 (LT)</option>
                   
-                  <!-- Oriente Médio -->
                   <option value="+90">+90 (TR)</option>
                   <option value="+972">+972 (IL)</option>
                   <option value="+971">+971 (AE)</option>
@@ -207,7 +204,6 @@
                   <option value="+961">+961 (LB)</option>
                   <option value="+98">+98 (IR)</option>
                   
-                  <!-- Ásia -->
                   <option value="+81">+81 (JP)</option>
                   <option value="+82">+82 (KR)</option>
                   <option value="+86">+86 (CN)</option>
@@ -232,7 +228,6 @@
                   <option value="+673">+673 (BN)</option>
                   <option value="+970">+970 (PS)</option>
                   
-                  <!-- África -->
                   <option value="+27">+27 (ZA)</option>
                   <option value="+20">+20 (EG)</option>
                   <option value="+212">+212 (MA)</option>
@@ -264,13 +259,11 @@
                   <option value="+235">+235 (TD)</option>
                   <option value="+236">+236 (CF)</option>
                   
-                  <!-- Oceania -->
                   <option value="+61">+61 (AU)</option>
                   <option value="+64">+64 (NZ)</option>
                   <option value="+679">+679 (FJ)</option>
                   <option value="+675">+675 (PG)</option>
                   
-                  <!-- Ásia Central e Cáucaso -->
                   <option value="+7">+7 (KZ)</option>
                   <option value="+998">+998 (UZ)</option>
                   <option value="+996">+996 (KG)</option>
@@ -439,8 +432,21 @@
       setTimeout(() => floatSel && floatSel.focus(), 0);
     };
 
-    main.addEventListener('mousedown', (e) => { e.preventDefault(); open(); });
-    main.addEventListener('focus', (e) => { if (isPointerFine.matches) { e.preventDefault(); open(); } });
+    // CORREÇÃO: Apenas previne o comportamento padrão e abre o menu customizado
+    // se o dispositivo for um mouse (pointer: fine). Em dispositivos de toque,
+    // o comportamento padrão (abrir o menu nativo) é permitido.
+    main.addEventListener('mousedown', (e) => {
+      if (isPointerFine.matches) {
+        e.preventDefault();
+        open();
+      }
+    });
+    main.addEventListener('focus', (e) => {
+      if (isPointerFine.matches) {
+        e.preventDefault();
+        open();
+      }
+    });
   })();
 </script>
 

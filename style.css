@@ -545,6 +545,17 @@ footer a:hover {
         align-items: center;
     }
 }
+
+/* Ajuste para telas a partir de 881px de largura */
+@media (min-width: 881px) {
+  #home .grid {
+    gap: 3rem; /* Aumenta o espaçamento entre texto e imagem */
+  }
+  .hero-art img {
+    max-width: 85%; /* Aumenta um pouco o tamanho da imagem */
+  }
+}
+
 @media (max-width: 767px) {
   .hero-art { display: none !important; }
   .login-container-split {

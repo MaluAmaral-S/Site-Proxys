@@ -1,0 +1,628 @@
+/* ========================================
+   1. CONFIGURAÇÕES E IMPORTS
+   ======================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* ========================================
+   2. ESTILOS GERAIS E GLOBAIS
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee #0000;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0a1024;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Estilos da Barra de Rolagem (Scrollbar) --- */
+*::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #22d3ee 60%, #22d3ee 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #22d3ee99, 0 0 2px #22d3ee99;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(120deg, #22d3ee99 60%, #22d3ee99 100%);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* --- Títulos de Seção --- */
+#planos h2,
+#features h2,
+#how-it-works h2 {
+  color: #f1f5f9;
+}
+
+/* --- Distanciamento para Links Âncora (Navbar Fixa) --- */
+#home, #features, #planos, #how-it-works, #locations, #faq {
+  scroll-margin-top: 80px; /* Ajusta a posição da rolagem para compensar o header */
+}
+
+
+/* ========================================
+   3. COMPONENTES DE UI
+   ======================================== */
+
+/* --- 3.1. Botões --- */
+.btn-primary {
+  background-color: #22d3ee;
+  color: #0a1024;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.25);
+}
+.btn-primary:hover {
+  background-color: #67e8f9;
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background-color: transparent;
+  color: #f1f5f9;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: #22d3ee;
+}
+
+/* --- 3.2. Header / Navegação --- */
+body > header {
+  background-color: rgba(10, 16, 36, 0.5) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+body > header .text-slate-300:hover {
+  color: #22d3ee !important;
+}
+body > header nav a.is-active {
+  position: relative;
+  color: #22d3ee !important;
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
+}
+body > header nav a.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background-color: #22d3ee;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
+}
+
+/* --- 3.3. Seção Hero (Principal) --- */
+#home {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+.hero-art {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-art img {
+  mix-blend-mode: lighten;
+  max-width: 75%;
+  height: auto;
+  transform: translateY(-5%);
+}
+
+/* --- 3.4. Seção Benefícios (Features) --- */
+.benefit-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+.benefit-card i {
+  font-size: 2.5rem;
+  color: #22d3ee; /* Ciano para ícones */
+}
+.benefit-card h3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+.benefit-card p {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* --- 3.5. Seção de Planos --- */
+.product-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-card i {
+    font-size: 3rem;
+    color: #22d3ee; /* Ciano para ícones */
+    margin-bottom: 1rem;
+}
+.product-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.product-card p {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+.product-card .btn-primary {
+    width: 100%;
+}
+
+
+/* --- 3.6. Seção "Como Funciona" --- */
+.how-it-works-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.how-it-works-number {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(34, 211, 238, 0.1);
+  border: 1px solid #22d3ee;
+  color: #22d3ee;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* --- 3.7. Seção Rede Global / Localizações --- */
+.fi { /* Estilo para bandeiras (flag-icons) */
+  border-radius: 3px;
+}
+
+/* --- 3.8. Seção FAQ --- */
+.faq-question {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+.faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- 3.9. Página de Login e Registro --- */
+.login-container-split {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 550px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  background-color: rgba(10, 16, 36, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.login-left-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.login-right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+.form-input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.85rem 1rem;
+  color: #f1f5f9;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input::placeholder {
+  color: #94a3b8;
+  opacity: 0.6;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+}
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper .form-input {
+  padding-right: 2.5rem;
+}
+.password-toggle-icon {
+  position: absolute;
+  right: 0.75rem;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+.password-toggle-icon:hover {
+  color: #f1f5f9;
+}
+.checkbox-custom {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #22d3ee;
+}
+.checkbox-custom:checked {
+  background-color: #22d3ee;
+}
+.ddi-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Poppins", sans-serif;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.85rem 2rem 0.85rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="%2394A3B8"><path d="M4 6l4 4 4-4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+}
+.ddi-select:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+  background-color: rgba(0, 0, 0, 0.28);
+}
+.ddi-select option {
+  background-color: #0a1024;
+  color: #f1f5f9;
+  font-family: "Poppins", sans-serif;
+}
+.ddi-select option:checked,
+.ddi-select option:focus,
+.ddi-select option:hover {
+  background-color: rgba(34, 211, 238, 0.18);
+  color: #22d3ee;
+}
+#ddi-flag {
+  font-size: 1.25em;
+  line-height: 1;
+  align-self: center;
+}
+#phone-ddi.form-input {
+  width: 140px !important;
+  max-width: 140px !important;
+}
+#phone.form-input {
+  width: auto;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+/* --- 3.10. Footer (Rodapé) --- */
+footer {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+footer a:hover {
+    color: #22d3ee !important;
+}
+
+/* ========================================
+   4. ANIMAÇÕES E ELEMENTOS DECORATIVOS
+   ======================================== */
+
+/* --- 4.1. Keyframes --- */
+@keyframes pulse-glow {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+/* ANIMAÇÃO DE FLUTUAÇÃO PARA O FOGUETE */
+@keyframes anim-bounce {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.anim-bounce {
+    animation: anim-bounce 3s infinite ease-in-out;
+}
+
+
+/* --- 4.2. Classes de Animação --- */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--animation-delay, 0s);
+}
+.fade-in-up {
+  transform: translateY(30px);
+}
+.fade-in-right {
+  transform: translateX(-30px);
+}
+.fade-in-left {
+  transform: translateX(30px);
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- 4.3. Elementos Decorativos --- */
+.decorative-orb {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #0891B2; /* AJUSTADO: Tom de ciano escuro da paleta */
+  filter: blur(15px);
+  box-shadow: 0 0 30px 10px linear-gradient(160deg, #0a1024 40%, #0f2c3e 100%);
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+  animation: pulse-glow 8s infinite ease-in-out alternate;
+}
+.orb-1 { width: 150px; height: 150px; top: 10%; left: 5%; animation-delay: -2s; }
+.orb-2 { width: 80px; height: 80px; top: 60%; right: 15%; animation-delay: 0s; }
+.orb-3 { width: 50px; height: 50px; top: 85%; left: 30%; animation-delay: -5s; }
+.orb-4 { width: 120px; height: 120px; top: 25%; right: 40%; animation-duration: 10s; }
+
+/* ========================================
+   5. CLASSES UTILITÁRIAS E OVERRIDES
+   ======================================== */
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: linear-gradient(160deg, #0a1024 40%, #0f2c3e 100%);
+  pointer-events: none;
+}
+
+/* As classes abaixo parecem ser overrides de um framework como Tailwind CSS. 
+  É uma boa prática agrupá-las para saber que elas têm alta especificidade.
+*/
+.bg-white\/5.ring-1.ring-white\/10 {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.text-yellow-400 {
+  color: #22d3ee !important;
+}
+.text-emerald-300, .hover\:text-emerald-300:hover, #close-locations-modal:hover {
+  color: #22d3ee !important;
+}
+.bg-gradient-to-br.from-violet-600 {
+  background: #22d3ee !important;
+}
+.border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.bg-gradient-to-r.from-violet-600 {
+  background: #22d3ee !important;
+  color: #0a1024 !important;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.25);
+}
+.bg-gradient-to-r.from-violet-600:hover {
+  opacity: 0.9;
+}
+.border.border-white\/10.bg-white\/5 {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.border.border-white\/10.bg-white\/5:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+.focus\:ring-emerald-400:focus {
+    --tw-ring-color: #22d3ee !important;
+}
+
+/* ========================================
+   6. RESPONSIVIDADE (MEDIA QUERIES)
+   ======================================== */
+
+/* Para telas de PC largas */
+@media (min-width: 1440px) {
+  #home {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  #home .mx-auto.max-w-7xl {
+    max-width: 88rem; 
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* CORREÇÃO DEFINITIVA: Para telas de laptop (largas e baixas) como 1366x768 */
+@media (min-width: 1025px) and (max-height: 800px) {
+  #home {
+    /* Reduz drasticamente o padding vertical para evitar corte */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+
+@media (max-width: 1370px) {
+  header .mx-auto.max-w-7xl,
+  #home,
+  #planos,
+  #features,
+  #how-it-works,
+  #locations,
+  #faq,
+  footer .mx-auto,
+  section.py-12.sm\:py-16 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+    .benefit-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* Ajuste para telas a partir de 881px de largura */
+@media (min-width: 881px) {
+  #home .grid {
+    gap: 3rem; /* Aumenta o espaçamento entre texto e imagem */
+  }
+  .hero-art img {
+    max-width: 85%; /* Aumenta um pouco o tamanho da imagem */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-art { display: none !important; }
+  .login-container-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .login-left-panel {
+    padding: 1rem;
+    min-height: 160px;
+    max-height: 220px;
+  }
+  .login-right-panel {
+    padding: 1.25rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 640px) {
+  #home, #planos, #features, #how-it-works, #locations, #faq, footer .mx-auto, section.py-12.sm\:py-16 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #locations-modal .relative {
+    max-width: 99vw;
+    width: 99vw;
+    margin: 2vw auto;
+    padding: 1rem;
+    border-radius: 0.7rem;
+  }
+  #locations-modal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  #locations-modal .flex.mb-4 {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  #locations-modal h3 {
+    font-size: 1.2rem;
+  }
+  .orb-1 { width: 100px; height: 100px; top: 5%; left: -15%; }
+  .orb-2 { width: 70px; height: 70px; top: auto; bottom: 10%; right: -10%; }
+  .orb-3 { bottom: 15%; left: 20%; }
+  .orb-4 { display: none; }
+}
+@media (max-width: 480px) {
+  label[for="phone"] + .flex.gap-2 {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  label[for="phone"] + .flex.gap-2 #ddi-flag {
+    order: 1;
+  }
+  label[for="phone"] + .flex.gap-2 #phone-ddi {
+    order: 2;
+    width: 120px !important;
+    max-width: 120px !important;
+  }
+  label[for="phone"] + .flex.gap-2 #phone {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+}

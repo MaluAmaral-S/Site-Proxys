@@ -121,54 +121,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // FUNÇÃO PARA CONFIGURAR O OBSERVER DA NAVBAR ATIVA
   // ==========================================================
   function setupNavObserver() {
-  const navLinks = Array.from(document.querySelectorAll('header nav a[href^="#"]'));
-  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const navLinks = Array.from(document.querySelectorAll('header nav a[href^="#"]'));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-  if (navLinks.length && sections.length) {
-    const linkById = new Map(navLinks.map(a => [a.getAttribute('href').replace('#',''), a]));
+    if (navLinks.length && sections.length) {
+        const linkById = new Map(navLinks.map(a => [a.getAttribute('href').replace('#',''), a]));
 
-    const activate = (id) => {
-      navLinks.forEach(l => l.classList.remove('is-active'));
-      const link = linkById.get(id);
-      if (link) {
-        link.classList.add('is-active');
-      }
-    };
+        const activate = (id) => {
+            navLinks.forEach(l => l.classList.remove('is-active'));
+            const link = linkById.get(id);
+            if (link) {
+                link.classList.add('is-active');
+            }
+        };
 
-    // Observer para ativar links conforme as seções entram na viewport
-    const navObserver = new IntersectionObserver((entries) => {
-      const visibleEntries = entries.filter(entry => entry.isIntersecting);
-      if (visibleEntries.length > 0) {
-        const lastVisibleEntry = visibleEntries[visibleEntries.length - 1];
-        activate(lastVisibleEntry.target.id);
-      }
-    }, { 
-      root: null,
-      threshold: 0.1,
-      rootMargin: '-80px 0px -80% 0px'
-    });
+        const navObserver = new IntersectionObserver((entries) => {
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            if (visibleEntries.length > 0) {
+                const lastVisibleEntry = visibleEntries[visibleEntries.length - 1];
+                activate(lastVisibleEntry.target.id);
+            }
+        }, { 
+            root: null,
+            threshold: 0.1,
+            rootMargin: '-80px 0px -80% 0px'
+        });
 
-    sections.forEach(sec => navObserver.observe(sec));
-
-    // Garante que o Home fique ativo ao carregar a página ou ao rolar para o topo
-    const setHomeActiveIfAtTop = () => {
-      if (window.scrollY < 120) {
-        activate('home');
-      }
-    };
-    window.addEventListener('scroll', setHomeActiveIfAtTop);
-    window.addEventListener('load', setHomeActiveIfAtTop);
-
-    // Ao clicar nos links, ativa imediatamente
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          activate(href.replace('#',''));
-        }
-      });
-    });
-  }
+        sections.forEach(sec => navObserver.observe(sec));
+    }
   }
 
   // ==========================================================
